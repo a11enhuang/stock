@@ -5,14 +5,4 @@ rsync -av --progress ../../stock . --exclude .git --exclude .idea --exclude *.md
 rm -rf cron
 cp -r ../../stock/cron .
 
-DOCKER_NAME=mayanghua/instock
-TAG1=$(date "+%Y%m")
-TAG2=latest
-
-echo " docker build -f Dockerfile -t ${DOCKER_NAME} ."
-docker build -f Dockerfile -t ${DOCKER_NAME}:${TAG1} -t ${DOCKER_NAME}:${TAG2} .
-echo "#################################################################"
-echo " docker push ${DOCKER_NAME} "
-
-docker push ${DOCKER_NAME}:${TAG1}
-docker push ${DOCKER_NAME}:${TAG2}
+docker build -f Dockerfile -t reopenai/instock:1.0.0 .
